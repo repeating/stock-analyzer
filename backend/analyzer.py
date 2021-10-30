@@ -38,7 +38,7 @@ class Analyzer:
         return f'%{round(100 * sum(changes) / len(changes), 2)}'
 
     def expected_current_price(self, stock, window):
-        avg_change = float(self.average_change(stock, window)[1: ]) / 100
+        avg_change = float(self.average_change(stock, window)[1:]) / 100
         price_earlier = self.price(self.__data[stock].iloc[window]['Close'])
         expected_price = price_earlier + price_earlier * avg_change
         return round(expected_price, 2)
@@ -49,8 +49,6 @@ class Analyzer:
         for stock in self.stocks:
             row = {
                 'current_price': self.__data[stock].iloc[0]['Close'],
-                'avg_2Y_change': self.average_change(stock, rows_in_year * 2),
-                'expected_current_2Y_price': self.expected_current_price(stock, rows_in_year * 2),
                 'avg_1Y_change': self.average_change(stock, rows_in_year),
                 'expected_current_1Y_price': self.expected_current_price(stock, rows_in_year),
                 'avg_6M_change': self.average_change(stock, rows_in_year // 2),

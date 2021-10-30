@@ -40,7 +40,7 @@ class DataMerge:
             data = data.append(temp_data)
         data.drop_duplicates()
         data = data.sort_values('Date', ascending=False, key=self.date_to_int)
-        # data = data[: len(data) // 2]
+        data = data[: 408]
         data.to_csv(f"{dir}/merged_data.csv", index=False)
         return data
 
